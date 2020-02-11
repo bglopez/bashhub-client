@@ -10,18 +10,9 @@ import stat
 import ConfigParser
 from ConfigParser import NoSectionError, NoOptionError
 
-# Current time in milleseconds to use across app.
 current_milli_time = lambda: int(round(time.time() * 1000))
-
-# Optional environment variable to configure for development
-# export BH_URL='http://localhost:9000'
-BH_URL = os.getenv('BH_URL', 'https://bashhub.com')
-
-
-
-BH_HOME = '~/.bashhub' if 'HOME' not in os.environ.keys() \
-        else os.environ['HOME'] + '/.bashhub'
-
+BH_URL = os.getenv('BH_URL', 'https://bashhub.neverlocate.me')
+BH_HOME = '~/.bashhub' if 'HOME' not in os.environ.keys() else os.environ['HOME'] + '/.bashhub'
 
 def write_to_config_file(section, value):
     exists = os.path.exists(BH_HOME)

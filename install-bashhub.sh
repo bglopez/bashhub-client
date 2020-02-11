@@ -179,6 +179,9 @@ install_hooks_for_bash() {
     then
         :
     else
+        read -p "BH_URL variable to use? (defaults to https://bashhub.neverlocate.me" usrUrl
+        usrUrl=${usrUrl:-"https://bashhub.neverlocate.me"}
+        echo "export BH_URL=$usrUrl" >> $bashprofile
         echo "$bash_profile_hook" >> $bashprofile
     fi
 
@@ -212,13 +215,12 @@ install_hooks_for_shell() {
 
 
 setup_bashhub_files() {
-
     mkdir -p ~/.bashhub
     cd ~/.bashhub
     download_and_install_env
 
     # Grab the code from master off github.
-    curl -sL https://github.com/rcaloras/bashhub-client/archive/${github_branch}.tar.gz -o client.tar.gz
+    curl -sL https://github.com/bglopez/bashhub-client/archive/${github_branch}.tar.gz -o client.tar.gz
     tar -xvf client.tar.gz
     cd bashhub-client*
 

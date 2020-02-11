@@ -211,7 +211,7 @@ def main():
         sys.exit(1)
     except KeyboardInterrupt:
         # To allow Ctrl+C (^C). Print a new line to drop the prompt.
-        print
+        print()
         sys.exit()
 
 
